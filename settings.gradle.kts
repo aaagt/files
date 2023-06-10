@@ -7,3 +7,4 @@ pluginManagement {
 }
 
 include("task1")
+include("task2")
