@@ -1,12 +1,12 @@
-import java.io.File;
-
 public class Main {
 
+    /**
+     * Путь к вручную созданной папке Games
+     */
     public static final String GAMES_PATH = "Games";
 
     public static void main(String[] args) {
         Logger logger = new Logger();
-        logger.info(new File("").getAbsolutePath());
         FilesMaker.make(logger, maker -> maker
                 .setGamesDirectory(GAMES_PATH)
                 .makeDirectoryToGames("/src")

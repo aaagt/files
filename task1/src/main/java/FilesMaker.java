@@ -6,14 +6,26 @@ import java.util.function.Consumer;
 
 public class FilesMaker {
 
+    /**
+     * Логгер
+     */
     Logger logger;
 
+    /**
+     * Путь к папке с игрой
+     */
     private String gamesDirectory;
 
     private FilesMaker(Logger logger) {
         this.logger = logger;
     }
 
+    /**
+     * Создать структуру файлов игры
+     *
+     * @param logger логгер
+     * @param block  функция создания структуры папок
+     */
     public static void make(Logger logger, Consumer<FilesMaker> block) {
         FilesMaker maker = new FilesMaker(logger);
 
@@ -24,12 +36,24 @@ public class FilesMaker {
         }
     }
 
+    /**
+     * Указать папку к директории с игрой
+     *
+     * @param path путь к папке
+     * @return
+     */
     public FilesMaker setGamesDirectory(String path) {
         this.logger.info(String.format("Set games directory to %s", path));
         this.gamesDirectory = new File(path).getAbsolutePath();
         return this;
     }
 
+    /**
+     * Создать папку в папке с игрой
+     *
+     * @param path Путь к папке (внутри папки игры)
+     * @return
+     */
     public FilesMaker makeDirectoryToGames(String path) {
         String fullPath = gamesDirectory + path;
 
@@ -52,6 +76,12 @@ public class FilesMaker {
         return this;
     }
 
+    /**
+     * Создать файл в папке с игрой
+     *
+     * @param path Путь к файлу (внутри папки игры)
+     * @return
+     */
     public FilesMaker createFileToGames(String path) {
         String fullPath = gamesDirectory + path;
 
@@ -80,6 +110,12 @@ public class FilesMaker {
         return this;
     }
 
+    /**
+     * Сохранить логи в файл
+     *
+     * @param path Путь к файлу (внутри папки игры)
+     * @return
+     */
     public FilesMaker saveLogToFile(String path) {
         String fullPath = gamesDirectory + path;
 
