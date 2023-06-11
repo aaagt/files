@@ -18,10 +18,10 @@ public class GameProgress implements Serializable {
     @Override
     public String toString() {
         return "GameProgress{" +
-                "health=" + health +
-                ", weapons=" + weapons +
-                ", lvl=" + lvl +
-                ", distance=" + distance +
-                '}';
+            "health=" + health +
+            ", weapons=" + weapons +
+            ", lvl=" + lvl +
+            ", distance=" + distance +
+            '}';
     }
 }

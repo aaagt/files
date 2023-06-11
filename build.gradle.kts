@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    checkstyle
 }
 
 allprojects {
@@ -11,7 +12,6 @@ allprojects {
 subprojects {
     group = "org.example"
     version = "1.0-SNAPSHOT"
-
 }
 
 

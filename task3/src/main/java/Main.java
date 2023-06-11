@@ -16,10 +16,17 @@ public class Main {
 
     public static void main(String[] args) {
         openZip(SAVE_PATH + "save.zip", SAVE_PATH).stream()
-                .map(Main::openProgress)
-                .forEach(System.out::println);
+            .map(Main::openProgress)
+            .forEach(System.out::println);
     }
 
+    /**
+     * Распаковка zip-файла с сохранениями
+     *
+     * @param zipPath       путь к zip-файлу
+     * @param extractToPath директория, куда распаковать
+     * @return список распакованных файлов
+     */
     public static List<String> openZip(String zipPath, String extractToPath) {
         List<String> extractedFiles = new ArrayList<>();
         try (FileInputStream fis = new FileInputStream(zipPath);
@@ -41,9 +48,14 @@ public class Main {
         return extractedFiles;
     }
 
+    /**
+     * Загрузить сохранённый прогресс
+     *
+     * @param path путь к файлу с сохранением
+     * @return прогресс игры
+     */
     public static GameProgress openProgress(String path) {
-        try (FileInputStream fis = new FileInputStream(path);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
+        try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (GameProgress) ois.readObject();
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
