@@ -88,7 +88,8 @@ public class Main {
      */
     private static void addFileToZipStream(ZipOutputStream zipOutputStream, String path) throws IOException {
         try (FileInputStream fis = new FileInputStream(path)) {
-            ZipEntry entry = new ZipEntry(path);
+            File file = new File(path);
+            ZipEntry entry = new ZipEntry(file.getName());
             zipOutputStream.putNextEntry(entry);
 
             // считываем содержимое файла в массив byte
